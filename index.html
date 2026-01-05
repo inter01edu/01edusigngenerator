@@ -8,9 +8,9 @@
     <title>01Edu Signature Generator</title>
 
     <style>
-      html, body, table, td, a, div {
-        font-family: "Times New Roman", Times, serif;
-      }
+    html, body, table, td, a, div {
+      font-family: "Times New Roman", Times, serif;
+    }
 
       .logo01edu img:first-child {
         width: 90px;
@@ -61,6 +61,7 @@
         background: #f7f7f7;
       }
 
+      /* Page layout helpers */
       .page-wrap {
         max-width: 900px;
         margin: 40px auto 60px;
@@ -77,10 +78,10 @@
         font-size: 16px;
         line-height: 1.6;
       }
-
+      
       .instructions-title {
-        font-size: 20px;
-        font-weight: 700;
+          font-size: 20px;
+          font-weight: 700;
       }
 
       .templates {
@@ -110,11 +111,14 @@
 
   <body style="margin:0; padding:0;">
 
+    <!-- ===================================================== -->
+    <!-- PAGE TITLE + INSTRUCTIONS -->
+    <!-- ===================================================== -->
     <br>
     <div class="page-wrap">
       <h1 class="page-title">01Edu Signature Generator</h1>
 
-      <br><br>
+<br><br>
 
       <div class="instructions">
         <strong class="instructions-title">3 Steps:</strong>
@@ -123,9 +127,7 @@
           <li>Click on “Copy” above your signature</li>
           <li>Paste the selection into <a href="#" style="color:#0063f9;">your email settings</a></li>
         </ol>
-
-        <br><br>
-
+<br><br>
         <strong class="instructions-title">If needed:</strong>
         <ol style="margin-top:1px;">
           <li>🎥 Watch the video to set up your signature <a href="#" style="color:#0063f9;">in this folder</a></li>
@@ -136,22 +138,23 @@
       </div>
     </div>
 
-    <!-- SIGNATURE TEMPLATES -->
+    <!-- ===================================================== -->
+    <!-- SIGNATURE TEMPLATES (SIDE BY SIDE) -->
+    <!-- ===================================================== -->
     <div class="sig-container">
       <table class="templates" cellpadding="0" cellspacing="0" border="0">
         <tr>
 
+          <!-- ================= TEMPLATE WITHOUT PHONE ================= -->
           <td width="50%" style="padding:0 20px;">
             <h3 style="font-family:Times New Roman,sans-serif;margin:0 0 10px;">
               Template – Without phone number
             </h3>
 
-            <table role="presentation" cellpadding="2" cellspacing="0" border="0" width="100%"
-              bgcolor="#ffffff"
-              style="width:100%;border-collapse:collapse;background-color:#ffffff;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;background:#ffffff;">
               <tr>
-                <td bgcolor="#ffffff" style="background-color:#ffffff;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                <td style="padding:2px 6px 6px 2px;background:#ffffff;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
                     <tr>
                       <td width="90" valign="middle" style="width:90px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="text-align:center;width:90px;border-collapse:collapse;">
@@ -188,6 +191,7 @@
                         </table>
                       </td>
 
+                      <!-- espaces + barre (centrés verticalement) -->
                       <td width="10" valign="middle" style="width:10px;font-size:0;line-height:0;">&nbsp;</td>
                       <td width="3"  valign="middle" bgcolor="#0063f9" style="width:3px;background:#0063f9;font-size:0;line-height:0;">&nbsp;</td>
                       <td width="10" valign="middle" style="width:10px;font-size:0;line-height:0;">&nbsp;</td>
@@ -218,17 +222,16 @@
             </table>
           </td>
 
+          <!-- ================= TEMPLATE WITH PHONE ================= -->
           <td width="50%" style="padding:0 20px;">
             <h3 style="font-family:Times New Roman,sans-serif;margin:0 0 10px;">
               Template – With phone number
             </h3>
 
-            <table role="presentation" cellpadding="2" cellspacing="0" border="0" width="100%"
-              bgcolor="#ffffff"
-              style="width:100%;border-collapse:collapse;background-color:#ffffff;mso-table-lspace:0pt;mso-table-rspace:0pt;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;background:#ffffff;">
               <tr>
-                <td bgcolor="#ffffff" style="background-color:#ffffff;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
+                <td style="padding:12px;background:#ffffff;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
                     <tr>
                       <td width="90" valign="middle" style="width:90px;">
                         <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="text-align:center;width:90px;border-collapse:collapse;">
@@ -300,8 +303,14 @@
       </table>
     </div>
 
+    <!-- ===================================================== -->
+    <!-- BOTTOM CALL TO ACTION -->
+    <!-- ===================================================== -->
     <div class="cta">Find your signature below 👇</div>
 
+    <!-- ===================================================== -->
+    <!-- GENERATED SIGNATURES -->
+    <!-- ===================================================== -->
     <div class="sig-container" id="signatures"></div>
 
     <script>
@@ -362,11 +371,13 @@
         sel.removeAllRanges();
       }
 
-      // IMPORTANT:
-      // - ID is now on the ROOT TABLE (not on a div)
-      // - bgcolor + background-color used
-      // - cellpadding used to preserve spacing in Gmail signature editor
+      // =============================
+      // EMAIL-PROOF GENERATED SIGNATURE
+      // FIX: White background must be on TABLE/TD using bgcolor + background-color
+      // =============================
       function buildSignatureHTML({ firstname, lastname, title, mobile, slug }) {
+        const fullName = `${firstname || ""} ${lastname || ""}`.trim();
+
         const mobileRow = mobile
           ? `<tr><td style="font-size:11px;line-height:11px;color:#000000;padding-top:6px;">Mobile: ${mobile}</td></tr>`
           : ``;
@@ -383,79 +394,84 @@
             `<button onclick="copyForMailIcloud('${slug}')">📋 Copy for Mail iCloud</button>`,
           `</div>`,
 
-          // ROOT element to copy = TABLE (not div)
-          `<table id="${slug}" role="presentation" width="100%" cellpadding="2" cellspacing="0" border="0"`,
-            `bgcolor="#ffffff"`,
-            `style="margin-top:20px;width:100%;border-collapse:collapse;background-color:#ffffff;mso-table-lspace:0pt;mso-table-rspace:0pt;">`,
+          /* IMPORTANT: keep your structure, but reinforce background on TABLE/TD */
+          `<div id="${slug}" style="background:#ffffff;background-color:#ffffff;">`,
 
-            `<tr>`,
-              `<td bgcolor="#ffffff" style="background-color:#ffffff;">`,
+            /* FIX: bgcolor + background-color on the root table */
+            `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" `,
+              `bgcolor="#ffffff" `,
+              `style="margin-top:20px;width:100%;border-collapse:collapse;background:#ffffff;background-color:#ffffff;mso-table-lspace:0pt;mso-table-rspace:0pt;">`,
+              `<tr>`,
 
-                `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">`,
-                  `<tr>`,
+                /* FIX: bgcolor + background-color on wrapper cell */
+                `<td bgcolor="#ffffff" style="padding:0px;background:#ffffff;background-color:#ffffff;">`,
 
-                    `<td width="90" valign="middle" style="width:90px !important;" bgcolor="#ffffff">`,
-                      `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:90px;border-collapse:collapse;text-align:center;">`,
-                        `<tr>`,
-                          `<td class="logo01edu">`,
-                            `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/logo01edu.png" alt="01Edu Logo" width="90" height="90" style="display:block;border:0;outline:none;text-decoration:none;width:90px;height:auto;max-width:90px;margin:0 auto;" />`,
-                          `</td>`,
-                        `</tr>`,
-                        `<tr>`,
-                          `<td height="6" style="height:6px;line-height:6px;font-size:0;">&nbsp;</td>`,
-                        `</tr>`,
-                        `<tr>`,
-                          `<td class="social">`,
-                            `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:auto;border-collapse:collapse;margin:0 auto;">`,
-                              `<tr>`,
-                                `<td style="padding:0 2px;">`,
-                                  `<a href="https://www.linkedin.com/company/01edu/" style="text-decoration:none;">`,
-                                    `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/linkedin.png" alt="LinkedIn" width="22" height="22" style="display:block;border:0;outline:none;text-decoration:none;width:22px;height:22px;" />`,
-                                  `</a>`,
-                                `</td>`,
-                                `<td style="padding:0 2px;">`,
-                                  `<a href="https://www.youtube.com/@01Edu_ai" style="text-decoration:none;">`,
-                                    `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/youtube.png" alt="YouTube" width="22" height="22" style="display:block;border:0;outline:none;text-decoration:none;width:22px;height:22px;" />`,
-                                  `</a>`,
-                                `</td>`,
-                                `<td style="padding:0 2px;">`,
-                                  `<a href="https://www.instagram.com/01edu_ai/" style="text-decoration:none;">`,
-                                    `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/instagram.png" alt="Instagram" width="22" height="22" style="display:block;border:0;outline:none;text-decoration:none;width:22px;height:22px;" />`,
-                                  `</a>`,
-                                `</td>`,
-                              `</tr>`,
-                            `</table>`,
-                          `</td>`,
-                        `</tr>`,
-                      `</table>`,
-                    `</td>`,
+                  `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">`,
+                    `<tr>`,
 
-                    `<td width="10" valign="middle" style="width:10px !important;font-size:0;line-height:0;" bgcolor="#ffffff">&nbsp;</td>`,
-                    `<td width="3"  valign="middle" bgcolor="#0063f9" style="width:3px !important;background:#0063f9;font-size:0;line-height:0;">&nbsp;</td>`,
-                    `<td width="10" valign="middle" style="width:10px !important;font-size:0;line-height:0;" bgcolor="#ffffff">&nbsp;</td>`,
+                      `<td width="90" valign="middle" bgcolor="#ffffff" style="width:90px !important;background:#ffffff;background-color:#ffffff;">`,
+                        `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:90px;border-collapse:collapse;text-align:center;">`,
+                          `<tr>`,
+                            `<td class="logo01edu";bgcolor="#ffffff" style="background-color:#ffffff;">`,
+                              `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/logo01edu.png" alt="01Edu Logo" width="90" height="90" style="display:block;border:0;outline:none;text-decoration:none;width:90px;height:auto;max-width:90px;margin:0 auto;" />`,
+                            `</td>`,
+                          `</tr>`,
+                          `<tr>`,
+                            `<td height="6" style="height:6px;line-height:6px;font-size:0;">&nbsp;</td>`,
+                          `</tr>`,
+                          `<tr>`,
+                            `<td class="social">`,
+                              `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:auto;border-collapse:collapse;margin:0 auto;">`,
+                                `<tr>`,
+                                  `<td style="padding:0 2px;">`,
+                                    `<a href="https://www.linkedin.com/company/01edu/" style="text-decoration:none;">`,
+                                      `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/linkedin.png" alt="LinkedIn" width="22" height="22" style="display:block;border:0;outline:none;text-decoration:none;width:22px;height:22px;" />`,
+                                    `</a>`,
+                                  `</td>`,
+                                  `<td style="padding:0 2px;">`,
+                                    `<a href="https://www.youtube.com/@01Edu_ai" style="text-decoration:none;">`,
+                                      `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/youtube.png" alt="YouTube" width="22" height="22" style="display:block;border:0;outline:none;text-decoration:none;width:22px;height:22px;" />`,
+                                    `</a>`,
+                                  `</td>`,
+                                  `<td style="padding:0 2px;">`,
+                                    `<a href="https://www.instagram.com/01edu_ai/" style="text-decoration:none;">`,
+                                      `<img src="https://raw.githubusercontent.com/inter01edu/testra/main/images/instagram.png" alt="Instagram" width="22" height="22" style="display:block;border:0;outline:none;text-decoration:none;width:22px;height:22px;" />`,
+                                    `</a>`,
+                                  `</td>`,
+                                `</tr>`,
+                              `</table>`,
+                            `</td>`,
+                          `</tr>`,
+                        `</table>`,
+                      `</td>`,
 
-                    `<td valign="middle" style="width:auto;" bgcolor="#ffffff">`,
-                      `<table role="presentation" class="sig-text" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">`,
-                        `<tr><td style="font-size:11px;line-height:15px;color:#000000;">Recode Our World With</td></tr>`,
-                        `<tr><td style="font-weight:bold;color:#0063f9;font-size:15px;line-height:19px;padding-bottom:2px;">${firstname || ""} ${lastname || ""}</td></tr>`,
-                        `<tr><td style="font-weight:bold;font-size:11px;line-height:10px;color:#000000;">${title || ""}</td></tr>`,
-                        mobileRow,
-                        `<tr><td style="font-size:11px;line-height:15px;"><a style="color:#0063f9;line-height:18px;text-decoration:none;" href="https://www.01edu.ai">www.01edu.ai</a></td></tr>`,
-                      `</table>`,
-                    `</td>`,
+                      `<td width="10" valign="middle" bgcolor="#ffffff" style="width:10px !important;font-size:0;line-height:0;background:#ffffff;background-color:#ffffff;">&nbsp;</td>`,
+                      `<td width="3"  valign="middle" bgcolor="#0063f9" style="width:3px !important;background:#0063f9;font-size:0;line-height:0;">&nbsp;</td>`,
+                      `<td width="10" valign="middle" bgcolor="#ffffff" style="width:10px !important;font-size:0;line-height:0;background:#ffffff;background-color:#ffffff;">&nbsp;</td>`,
 
-                  `</tr>`,
+                      `<td valign="middle" bgcolor="#ffffff" style="width:auto;background:#ffffff;background-color:#ffffff;">`,
+                        `<table role="presentation" class="sig-text" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">`,
+                          `<tr><td style="font-size:11px;line-height:15px;color:#000000;">Recode Our World With</td></tr>`,
+                          `<tr><td style="font-weight:bold;color:#0063f9;font-size:15px;line-height:19px;padding-bottom:2px;">${firstname || ""} ${lastname || ""}</td></tr>`,
+                          `<tr><td style="font-weight:bold;font-size:11px;line-height:10px;color:#000000;">${title || ""}</td></tr>`,
+                          mobileRow,
+                          `<tr><td style="font-size:11px;line-height:15px;"><a style="color:#0063f9;line-height:18px;text-decoration:none;" href="https://www.01edu.ai">www.01edu.ai</a></td></tr>`,
+                        `</table>`,
+                      `</td>`,
 
-                  `<tr>`,
-                    `<td colspan="5" style="padding-top:12px;color:#666666;font-size:11px;line-height:16px" bgcolor="#ffffff">`,
-                      `Any electronic messages sent outside your regular working hours do not require a response until you return to your normal working hours.`,
-                    `</td>`,
-                  `</tr>`,
+                    `</tr>`,
 
-                `</table>`,
-              `</td>`,
-            `</tr>`,
-          `</table>`
+                    `<tr>`,
+                      `<td colspan="5" bgcolor="#ffffff" style="padding-top:12px;color:#666666;font-size:11px;line-height:16px;background:#ffffff;background-color:#ffffff;">`,
+                        `Any electronic messages sent outside your regular working hours do not require a response until you return to your normal working hours.`,
+                      `</td>`,
+                    `</tr>`,
+
+                  `</table>`,
+                `</td>`,
+              `</tr>`,
+            `</table>`,
+          `</div>`
         ].join("");
       }
 
