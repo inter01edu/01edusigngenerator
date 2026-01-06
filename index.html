@@ -382,7 +382,7 @@
           : ``;
 
         return [
-          `<div id="${slug}" style="display:flex;flex-direction:row;margin:10px 0;user-select:none">`,
+          `<div id="${slug}-anchor" style="display:flex;flex-direction:row;margin:10px 0;user-select:none">`,
             `<div style="background:#eee;flex-grow:1"></div>`,
             `<a style="text-decoration:none;color:grey" href="#${slug}">🔗</a>`,
           `</div>`,
@@ -447,7 +447,7 @@
                       `<td valign="middle" bgcolor="#ffffff" style="width:auto;background:#ffffff;background-color:#ffffff;">`,
                         `<table role="presentation" class="sig-text" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;font-family:Helvetica, Arial, sans-serif;">`,
                           `<tr><td style="font-size:12px;line-height:13px;color:#000000;font-family:Helvetica, Arial, sans-serif;">Recode Our World With</td></tr>`,
-                          `<tr><td style="font-weight:bold;color:#0063f9;font-size:15px;line-height:20px;padding-bottom:2px;font-family:Helvetica, Arial, sans-serif;">${firstname || ""} ${lastname || ""}</t d></tr>`,
+                          `<tr><td style="font-weight:bold;color:#0063f9;font-size:15px;line-height:20px;padding-bottom:2px;font-family:Helvetica, Arial, sans-serif;">${firstname || ""} ${lastname || ""}</td></tr>`,
                           `<tr><td style="font-weight:bold;font-size:12px;line-height:12px;color:#000000;font-family:Helvetica, Arial, sans-serif;">${title || ""}</td></tr>`,
                           mobileRow,
                           `<tr><td style="font-size:12px;line-height:15px;font-family:Helvetica, Arial, sans-serif;"><a style="color:#0063f9;line-height:18px;text-decoration:underline;font-family:Helvetica, Arial, sans-serif;" href="https://www.01edu.ai">www.01edu.ai</a></td></tr>`,
